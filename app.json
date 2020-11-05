@@ -1,4 +1,5 @@
 {
   "name": "PetFinder",
-  "displayName": "PetFinder"
+  "displayName": "PetFinder",
+  "environment": "production"
 }
