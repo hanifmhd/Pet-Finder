@@ -1,157 +1,51 @@
 import React, {useEffect, useState} from 'react';
 import {
+  Alert,
   FlatList,
   Image,
   Platform,
-  ScrollView,
+  RefreshControl,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import {RFValue} from 'react-native-responsive-fontsize';
+import {useDispatch, useSelector} from 'react-redux';
+import api from '../actions/api';
+import {EmptyState, GradientText, Loader} from '../components';
 import R from '../configs';
 import images from '../configs/images';
-import GradientText from '../components/GradientText';
-
-const data = {
-  affenpinscher: [],
-  african: [],
-  airedale: [],
-  akita: [],
-  appenzeller: [],
-  australian: ['shepherd'],
-  basenji: [],
-  beagle: [],
-  bluetick: [],
-  borzoi: [],
-  bouvier: [],
-  boxer: [],
-  brabancon: [],
-  briard: [],
-  buhund: ['norwegian'],
-  bulldog: ['boston', 'english', 'french'],
-  bullterrier: ['staffordshire'],
-  cairn: [],
-  cattledog: ['australian'],
-  chihuahua: [],
-  chow: [],
-  clumber: [],
-  cockapoo: [],
-  collie: ['border'],
-  coonhound: [],
-  corgi: ['cardigan'],
-  cotondetulear: [],
-  dachshund: [],
-  dalmatian: [],
-  dane: ['great'],
-  deerhound: ['scottish'],
-  dhole: [],
-  dingo: [],
-  doberman: [],
-  elkhound: ['norwegian'],
-  entlebucher: [],
-  eskimo: [],
-  finnish: ['lapphund'],
-  frise: ['bichon'],
-  germanshepherd: [],
-  greyhound: ['italian'],
-  groenendael: [],
-  havanese: [],
-  hound: ['afghan', 'basset', 'blood', 'english', 'ibizan', 'plott', 'walker'],
-  husky: [],
-  keeshond: [],
-  kelpie: [],
-  komondor: [],
-  kuvasz: [],
-  labrador: [],
-  leonberg: [],
-  lhasa: [],
-  malamute: [],
-  malinois: [],
-  maltese: [],
-  mastiff: ['bull', 'english', 'tibetan'],
-  mexicanhairless: [],
-  mix: [],
-  mountain: ['bernese', 'swiss'],
-  newfoundland: [],
-  otterhound: [],
-  ovcharka: ['caucasian'],
-  papillon: [],
-  pekinese: [],
-  pembroke: [],
-  pinscher: ['miniature'],
-  pitbull: [],
-  pointer: ['german', 'germanlonghair'],
-  pomeranian: [],
-  poodle: ['miniature', 'standard', 'toy'],
-  pug: [],
-  puggle: [],
-  pyrenees: [],
-  redbone: [],
-  retriever: ['chesapeake', 'curly', 'flatcoated', 'golden'],
-  ridgeback: ['rhodesian'],
-  rottweiler: [],
-  saluki: [],
-  samoyed: [],
-  schipperke: [],
-  schnauzer: ['giant', 'miniature'],
-  setter: ['english', 'gordon', 'irish'],
-  sheepdog: ['english', 'shetland'],
-  shiba: [],
-  shihtzu: [],
-  spaniel: [
-    'blenheim',
-    'brittany',
-    'cocker',
-    'irish',
-    'japanese',
-    'sussex',
-    'welsh',
-  ],
-  springer: ['english'],
-  stbernard: [],
-  terrier: [
-    'american',
-    'australian',
-    'bedlington',
-    'border',
-    'dandie',
-    'fox',
-    'irish',
-    'kerryblue',
-    'lakeland',
-    'norfolk',
-    'norwich',
-    'patterdale',
-    'russell',
-    'scottish',
-    'sealyham',
-    'silky',
-    'tibetan',
-    'toy',
-    'westhighland',
-    'wheaten',
-    'yorkshire',
-  ],
-  vizsla: [],
-  waterdog: ['spanish'],
-  weimaraner: [],
-  whippet: [],
-  wolfhound: ['irish'],
-};
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const loadingRedux = useSelector((state) => state.loading);
+  const [error, setError] = useState('We cant find any data');
   const [keyData, setKeyData] = useState([]);
+  const [data, setData] = useState([]);
+
   useEffect(() => {
-    let newDataKey = Object.keys(data);
-    setKeyData(newDataKey);
+    fetchListBreed();
   }, []);
+
+  const fetchListBreed = async () => {
+    await dispatch(api.getListBreed())
+      .then((result) => {
+        setData(result.message);
+        setKeyData(Object.keys(result.message));
+      })
+      .catch((e) => {
+        setData('');
+        setKeyData([]);
+        return Alert.alert(e);
+      });
+  };
 
   return (
     <View style={styles.container}>
+      <Loader title={'Loading'} isVisible={loadingRedux} />
       <View style={styles.canvas}>
-        <View style={{marginBottom: RFValue(20)}}>
+        <View style={{marginBottom: RFValue(10)}}>
           <GradientText
             text={'Breed'}
             style={{fontSize: R.sizes.txtHeading1, fontWeight: 'bold'}}
@@ -198,15 +92,22 @@ const Home = () => {
                 <Text style={{fontWeight: 'bold', textTransform: 'capitalize'}}>
                   {item}
                 </Text>
-                <Text style={{color: R.colors.baseGreyDark}}>{`${
-                  data[item].length
-                } pet${data[item].length > 0 ? 's' : ''}`}</Text>
+                {data && (
+                  <Text style={{color: R.colors.baseGreyDark}}>{`${
+                    data[item].length
+                  } pet${data[item].length > 0 ? 's' : ''}`}</Text>
+                )}
               </TouchableOpacity>
             );
           }}
           showsVerticalScrollIndicator={false}
           horizontal={false}
           numColumns={2}
+          ListEmptyComponent={
+            <EmptyState title={'No data found'} subtitle={error} />
+          }
+          refreshing={false}
+          onRefresh={() => fetchListBreed()}
         />
       </View>
     </View>

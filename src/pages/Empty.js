@@ -1,15 +1,17 @@
 import React from 'react';
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {EmptyState} from '../components';
 import R from '../configs';
 
 const Empty = () => {
   return (
     <View style={styles.container}>
-      <StatusBar
-        barStyle={'dark-content'}
-        backgroundColor={R.colors.baseWhite}
+      <StatusBar barStyle={'dark-content'} backgroundColor={'transparent'} />
+      <EmptyState
+        title={'Coming soon'}
+        subtitle={'We are preparing something new'}
+        soon
       />
-      <Text>Empty</Text>
     </View>
   );
 };
@@ -19,5 +21,6 @@ export default Empty;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: R.colors.baseWhite,
   },
 });

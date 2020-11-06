@@ -3,11 +3,11 @@ import React, {useState} from 'react';
 import {
   Dimensions,
   FlatList,
+  Image,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
   View,
-  Image,
 } from 'react-native';
 import {RFValue} from 'react-native-responsive-fontsize';
 import R from '../configs';
@@ -20,7 +20,7 @@ const HomeStack = ({navigation}) => {
   return (
     <View style={styles.container}>
       <StatusBar
-        backgroundColor={R.colors.baseWhite}
+        backgroundColor={'transparent'}
         barStyle={'dark-content'}
         translucent
       />
