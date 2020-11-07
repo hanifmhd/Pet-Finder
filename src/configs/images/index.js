@@ -6,6 +6,7 @@ const images = {
   dog: require('../../../assets/images/dog.png'),
   empty: require('../../../assets/images/empty.png'),
   coming_soon: require('../../../assets/images/coming_soon.png'),
+  plus: require('../../../assets/images/plus.png'),
 };
 
 export default images;

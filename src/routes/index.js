@@ -1,76 +1,205 @@
-/* eslint-disable react-native/no-inline-styles */
+import {
+  BottomTabBar,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {Alert, StyleSheet, Text, View} from 'react-native';
+import {Alert, Image, View} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {
+  BottomTabBarWrapper,
+  MultiBarButton,
+  MultiBarProvider,
+} from 'react-native-multibar';
 import {RFValue} from 'react-native-responsive-fontsize';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import colors from '../configs/colors';
-import fonts from '../configs/fonts';
-import sizes from '../configs/sizes';
-import HomeStack from '../components/HomeStack';
-import Home from '../pages/Home';
-import Empty from '../pages/Empty';
+import R from '../configs';
+import {Home, Empty} from '../pages';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
-const StackScreen = [
-  {
-    name: 'HomeStack',
-    component: HomeStack,
-  },
-  {
-    name: 'Home',
-    component: Home,
-  },
-  {
-    name: 'Empty',
-    component: Empty,
-  },
-];
-
-function Router() {
+export default function Router() {
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="HomeStack">
-          {StackScreen.map((item, index) => {
-            return (
-              <Stack.Screen
-                key={index}
-                name={item.name}
-                component={item.component}
-                options={({navigation, route}) => ({
-                  headerBackTitleVisible: false,
-                  headerShown: false,
-                  headerTitleAlign: 'center',
-                })}
+    <NavigationContainer>
+      <MultiBarProvider
+        overlayProps={{
+          expandingMode: 'staging',
+        }}
+        data={[
+          ({navigation}) => (
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: R.colors.basePrimary,
+                borderRadius: RFValue(48),
+              }}>
+              <Icon
+                name={'add-circle-outline'}
+                color={R.colors.baseWhite}
+                size={RFValue(24)}
+                onPress={() => Alert.alert('Coming soon!')}
               />
-            );
-          })}
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+            </View>
+          ),
+          ({navigation}) => (
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: R.colors.basePrimary,
+              }}>
+              <Icon
+                name={'add-outline'}
+                color={R.colors.baseWhite}
+                size={RFValue(24)}
+                onPress={() => Alert.alert('Coming soon!')}
+              />
+            </View>
+          ),
+          ({navigation}) => (
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: R.colors.basePrimary,
+              }}>
+              <Icon
+                name={'add-outline'}
+                color={R.colors.baseWhite}
+                size={RFValue(24)}
+                onPress={() => Alert.alert('Coming soon!')}
+              />
+            </View>
+          ),
+          ({navigation}) => (
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: R.colors.basePrimary,
+              }}>
+              <Icon
+                name={'add-outline'}
+                color={R.colors.baseWhite}
+                size={RFValue(24)}
+                onPress={() => Alert.alert('Coming soon!')}
+              />
+            </View>
+          ),
+        ]}
+        iconSize={40}
+        overlayRadius={100}
+        initialExtrasVisible={false}>
+        <Tab.Navigator
+          initialRouteName="Home"
+          tabBar={(props) => (
+            <BottomTabBarWrapper params={props.navigation}>
+              <BottomTabBar {...props} />
+            </BottomTabBarWrapper>
+          )}>
+          <Tab.Screen
+            name="Home"
+            component={Home}
+            options={{
+              tabBarLabel: '',
+              tabBarIcon: ({focused, color, size}) => {
+                return (
+                  <Image
+                    source={R.images.home}
+                    style={{
+                      width: RFValue(24),
+                      height: RFValue(24),
+                      marginTop: RFValue(10),
+                      tintColor: focused ? undefined : R.colors.baseGrey,
+                    }}
+                  />
+                );
+              },
+            }}
+          />
+          <Tab.Screen
+            name="Chat"
+            component={Empty}
+            options={{
+              tabBarLabel: '',
+              tabBarIcon: ({focused, color, size}) => {
+                return (
+                  <Image
+                    source={R.images.chat}
+                    style={{
+                      width: RFValue(24),
+                      height: RFValue(24),
+                      marginTop: RFValue(10),
+                      tintColor: focused ? undefined : R.colors.baseGrey,
+                    }}
+                  />
+                );
+              },
+            }}
+          />
+          <Tab.Screen
+            name="Add"
+            component={Empty}
+            options={{
+              tabBarLabel: '',
+              tabBarButton: () => (
+                <MultiBarButton
+                  style={{
+                    backgroundColor: R.colors.basePrimary,
+                  }}>
+                  <Image
+                    source={R.images.plus}
+                    style={{
+                      width: RFValue(24),
+                      height: RFValue(24),
+                    }}
+                  />
+                </MultiBarButton>
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Search"
+            component={Empty}
+            options={{
+              tabBarLabel: '',
+              tabBarIcon: ({focused, color, size}) => {
+                return (
+                  <Image
+                    source={R.images.search}
+                    style={{
+                      width: RFValue(24),
+                      height: RFValue(24),
+                      marginTop: RFValue(10),
+                      tintColor: focused ? undefined : R.colors.baseGrey,
+                    }}
+                  />
+                );
+              },
+            }}
+          />
+          <Tab.Screen
+            name="Profile"
+            component={Empty}
+            options={{
+              tabBarLabel: '',
+              tabBarIcon: ({focused, color, size}) => {
+                return (
+                  <Image
+                    source={R.images.profile}
+                    style={{
+                      width: RFValue(24),
+                      height: RFValue(24),
+                      marginTop: RFValue(10),
+                      tintColor: focused ? undefined : R.colors.baseGrey,
+                    }}
+                  />
+                );
+              },
+            }}
+          />
+        </Tab.Navigator>
+      </MultiBarProvider>
+    </NavigationContainer>
   );
 }
-
-export default Router;
-
-const styles = StyleSheet.create({
-  containerHeaderTitle: {marginLeft: RFValue(-8)},
-  headerTitle: {
-    fontSize: sizes.txtParagraph,
-    fontWeight: 'bold',
-    color: colors.baseWhite,
-  },
-  headerTitleLine2: {
-    fontSize: sizes.txtBody,
-    color: colors.baseWhite,
-  },
-  headerRight: {
-    marginRight: RFValue(16),
-    width: RFValue(12),
-    height: RFValue(12),
-  },
-});

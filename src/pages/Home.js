@@ -108,6 +108,10 @@ const Home = () => {
           }
           refreshing={false}
           onRefresh={() => fetchListBreed()}
+          contentContainerStyle={{
+            paddingBottom:
+              Platform.OS === 'android' ? RFValue(100) : RFValue(40),
+          }}
         />
       </View>
     </View>
