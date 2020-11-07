@@ -17,7 +17,7 @@ import {EmptyState, GradientText, Loader} from '../components';
 import R from '../configs';
 import images from '../configs/images';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const loadingRedux = useSelector((state) => state.loading);
   const [error, setError] = useState('We cant find any data');
@@ -60,22 +60,12 @@ const Home = () => {
           renderItem={({item, index}) => {
             return (
               <TouchableOpacity
-                style={{
-                  flex: 1,
-                  backgroundColor: R.colors.baseWhite,
-                  shadowColor: '#000',
-                  shadowOffset: {
-                    width: 0,
-                    height: 1,
-                  },
-                  shadowOpacity: 0.1,
-                  shadowRadius: 5,
-                  elevation: 5,
-                  paddingVertical: RFValue(20),
-                  borderRadius: RFValue(4),
-                  margin: RFValue(4),
-                  alignItems: 'center',
-                }}>
+                style={[styles.container, styles.cardContainer]}
+                onPress={() =>
+                  navigation.navigate('Detail', {
+                    data: {parent: item, children: data[item]},
+                  })
+                }>
                 <View
                   style={{
                     backgroundColor: '#D4943B',
@@ -95,7 +85,7 @@ const Home = () => {
                 {data && (
                   <Text style={{color: R.colors.baseGreyDark}}>{`${
                     data[item].length
-                  } pet${data[item].length > 0 ? 's' : ''}`}</Text>
+                  } pet${data[item].length > 1 ? 's' : ''}`}</Text>
                 )}
               </TouchableOpacity>
             );
@@ -124,12 +114,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: R.colors.baseWhite,
-    paddingTop: Platform.OS === 'android' ? RFValue(4) : RFValue(34),
   },
   canvas: {
     padding: RFValue(20),
   },
-  menuContainer: {
-    flexDirection: 'row',
+  cardContainer: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 5,
+    paddingVertical: RFValue(20),
+    borderRadius: RFValue(4),
+    margin: RFValue(4),
+    alignItems: 'center',
   },
 });

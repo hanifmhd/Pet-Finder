@@ -6,10 +6,6 @@ import R from '../configs';
 const Empty = () => {
   return (
     <View style={styles.container}>
-      <StatusBar
-        barStyle={'dark-content'}
-        backgroundColor={R.colors.baseWhite}
-      />
       <EmptyState
         title={'Coming soon'}
         subtitle={'We are preparing something new'}

@@ -1,5 +1,8 @@
 import {exp} from 'react-native/Libraries/Animated/src/Easing';
 
-export {default as GradientText} from './GradientText';
-export {default as Loader} from './Loader';
-export {default as EmptyState} from './EmptyState';
+import HomeStack from './HomeStack';
+import GradientText from './GradientText';
+import EmptyState from './EmptyState';
+import Loader from './Loader';
+
+export {HomeStack, GradientText, EmptyState, Loader};
