@@ -29,7 +29,7 @@ const Home = ({navigation}) => {
   }, []);
 
   const fetchListBreed = async () => {
-    await dispatch(api.getListBreed())
+    await dispatch(api.getListAllBreeds())
       .then((result) => {
         setData(result.message);
         setKeyData(Object.keys(result.message));
@@ -63,7 +63,7 @@ const Home = ({navigation}) => {
                 style={[styles.container, styles.cardContainer]}
                 onPress={() =>
                   navigation.navigate('Detail', {
-                    data: {parent: item, children: data[item]},
+                    parent: item,
                   })
                 }>
                 <View
@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: R.colors.baseWhite,
+    paddingTop: Platform.OS === 'android' ? 0 : RFValue(20),
   },
   canvas: {
     padding: RFValue(20),

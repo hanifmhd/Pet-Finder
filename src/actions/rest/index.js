@@ -1,22 +1,8 @@
 import {environment} from '../../../app.json';
 
-const baseUrlDevl = 'https://dog.ceo/api/breeds';
-const baseUrlProd = 'https://dog.ceo/api/breeds';
+const baseUrlDevl = 'https://dog.ceo/api';
+const baseUrlProd = 'https://dog.ceo/api';
 
-const baseUrl = environment === 'development' ? baseUrlDevl : baseUrlProd;
-
-const rest = {
-  //list all breeds
-  getListBreed: `${baseUrl}/list/all`,
-
-  //display random image
-  getRandomImage: `${baseUrl}/image/random`,
-
-  //display image by breeds
-  getImage: `${baseUrl}/images`,
-
-  //list all sub breeds
-  getSubBreeds: `${baseUrl}/list`,
-};
+const rest = environment === 'development' ? baseUrlDevl : baseUrlProd;
 
 export default rest;
