@@ -5,6 +5,7 @@ import {
   Image,
   Platform,
   RefreshControl,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -15,7 +16,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import api from '../actions/api';
 import {EmptyState, GradientText, Loader} from '../components';
 import R from '../configs';
-import images from '../configs/images';
 
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
@@ -43,6 +43,12 @@ const Home = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        hidden={false}
+        backgroundColor={R.colors.baseWhite}
+        translucent={true}
+      />
       <Loader title={'Loading'} isVisible={loadingRedux} />
       <View style={styles.canvas}>
         <View style={{marginBottom: RFValue(10)}}>
@@ -64,18 +70,19 @@ const Home = ({navigation}) => {
                 onPress={() =>
                   navigation.navigate('Detail', {
                     parent: item,
+                    children: data[item],
                   })
                 }>
                 <View
                   style={{
                     backgroundColor: '#D4943B',
-                    opacity: 0.6,
+                    opacity: Platform.OS === 'android' ? 0.4 : 0.6,
                     borderRadius: RFValue(40),
                     padding: RFValue(10),
                     marginBottom: RFValue(10),
                   }}>
                   <Image
-                    source={images.dog}
+                    source={R.images.dog}
                     style={{width: RFValue(40), height: RFValue(40)}}
                   />
                 </View>
@@ -114,7 +121,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: R.colors.baseWhite,
-    paddingTop: Platform.OS === 'android' ? 0 : RFValue(20),
+    paddingTop: RFValue(20),
   },
   canvas: {
     padding: RFValue(20),

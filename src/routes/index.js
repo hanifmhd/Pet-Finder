@@ -2,7 +2,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {HomeStack} from '../components';
-import {Detail, Empty} from '../pages';
+import {Detail, DetailInfo, Empty, OnBoarding, SignIn, Splash} from '../pages';
 
 const Stack = createStackNavigator();
 
@@ -10,13 +10,17 @@ const StackScreen = [
   {name: 'HomeStack', component: HomeStack},
   {name: 'Empty', component: Empty},
   {name: 'Detail', component: Detail},
+  {name: 'OnBoarding', component: OnBoarding},
+  {name: 'SignIn', component: SignIn},
+  {name: 'Splash', component: Splash},
+  {name: 'DetailInfo', component: DetailInfo},
 ];
 
 export default function Router() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="HomeStack"
+        initialRouteName="Splash"
         screenOptions={{headerShown: false}}>
         {StackScreen.map((item, index) => (
           <Stack.Screen
