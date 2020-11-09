@@ -4,7 +4,9 @@ Pet Finder app using React Native
 ---
 
 ## Clone App from Dribbble
-![alt text](https://cdn.dribbble.com/users/287119/screenshots/4745402/attachments/1069154/limage.png)
+https://dribbble.com/shots/4745402/attachments/1069154?mode=media
+
+![](https://cdn.dribbble.com/users/287119/screenshots/4745402/attachments/1069154/limage.png)
 
 ## API
 https://dog.ceo/dog-api/documentation/
