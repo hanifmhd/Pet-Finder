@@ -89,7 +89,7 @@ const Empty = ({navigation}) => {
       <Loader title={'Loading'} isVisible={loadingRedux} />
       <View style={{marginTop: RFValue(40)}}>
         <SearchBar
-          placeholder="Type Here..."
+          placeholder={'Search any breeds e.g., Bulldog, Shepherd, etc'}
           onChangeText={searchFilter}
           value={search}
           lightTheme

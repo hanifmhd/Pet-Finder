@@ -136,7 +136,7 @@ const api = {
       dispatch({type: redux.FETCH_LIST_IMAGE_ALL_BREEDS});
       try {
         const response = await fetch(
-          encodeURI(`${rest}/breeds/image/random/10`),
+          encodeURI(`${rest}/breeds/image/random/50`),
           {
             credentials: 'include',
             method: 'GET',

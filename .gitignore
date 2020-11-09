@@ -30,7 +30,7 @@ local.properties
 *.iml
 
 #release apk file
-release/
+# release/
 
 # node.js
 #
