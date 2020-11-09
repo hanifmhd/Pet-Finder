@@ -1,11 +1,10 @@
 # Pet-Finder
-Pet Finder app using React Native
+Pet Finder App using React Native
 
 ---
 
-## Clone App from Dribbble
-https://dribbble.com/shots/4745402/attachments/1069154?mode=media
-
+## Clone Design App from Dribbble
+Mahes Kantariya - https://dribbble.com/shots/4745402/attachments/1069154?mode=media
 ![](https://cdn.dribbble.com/users/287119/screenshots/4745402/attachments/1069154/limage.png)
 
 ## API
