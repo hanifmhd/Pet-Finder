@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import AsyncStorage from '@react-native-community/async-storage';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
+  BackHandler,
   Dimensions,
   Image,
   KeyboardAvoidingView,
@@ -10,6 +11,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -19,6 +21,7 @@ import {RFValue} from 'react-native-responsive-fontsize';
 import R from '../configs';
 
 const {width, height} = Dimensions.get('screen');
+let backPressed = 0;
 
 const SignIn = ({navigation}) => {
   const [username, setUsername] = useState('');
@@ -26,6 +29,29 @@ const SignIn = ({navigation}) => {
   const [errUsername, setErrUsername] = useState(false);
   const [errPassword, setErrPassword] = useState(false);
   const [passwordType, setPasswordType] = useState('password');
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', backAction);
+    return () => {
+      BackHandler.removeEventListener('hardwareBackPress', backAction);
+    };
+  }, []);
+
+  const backAction = () => {
+    if (!navigation.isFocused()) {
+      // The screen is not focused, so don't do anything
+      backPressed = 0;
+      return false;
+    }
+
+    if (backPressed <= 0) {
+      ToastAndroid.show('Press back again to close app', ToastAndroid.SHORT);
+      backPressed = backPressed + 1;
+    } else {
+      BackHandler.exitApp();
+    }
+    return true;
+  };
 
   const checkValidation = () => {
     if (username !== 'user') {

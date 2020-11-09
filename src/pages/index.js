@@ -5,5 +5,6 @@ import OnBoarding from './OnBoarding';
 import SignIn from './SignIn';
 import Splash from './Splash';
 import DetailInfo from './DetailInfo';
+import Profile from './Profile';
 
-export {Home, Empty, Detail, OnBoarding, SignIn, Splash, DetailInfo};
+export {Home, Empty, Detail, OnBoarding, SignIn, Splash, DetailInfo, Profile};

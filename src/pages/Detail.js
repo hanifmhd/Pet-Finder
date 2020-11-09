@@ -14,7 +14,7 @@ import {RFValue} from 'react-native-responsive-fontsize';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useDispatch, useSelector} from 'react-redux';
 import api from '../actions/api';
-import {EmptyState, Loader} from '../components';
+import {EmptyState, GradientText, Loader} from '../components';
 import R from '../configs';
 
 const {width, height} = Dimensions.get('screen');
@@ -109,7 +109,10 @@ const Detail = ({navigation, route}) => {
             size={RFValue(28)}
             onPress={() => navigation.goBack()}
           />
-          <Text style={{fontSize: R.sizes.txtHeading3}}>Filter</Text>
+          <GradientText
+            text={'Filter'}
+            style={{fontSize: R.sizes.txtHeading3}}
+          />
         </View>
         <View
           style={{
@@ -129,13 +132,13 @@ const Detail = ({navigation, route}) => {
               name={'grid-outline'}
               size={RFValue(24)}
               style={{marginRight: RFValue(10)}}
-              color={grid === 2 ? undefined : R.colors.baseGrey}
+              color={grid === 2 ? R.colors.baseBlack : R.colors.baseGrey}
               onPress={() => setGrid(2)}
             />
             <Icon
               name={'reorder-four-outline'}
               size={RFValue(30)}
-              color={grid === 1 ? undefined : R.colors.baseGrey}
+              color={grid === 1 ? R.colors.baseBlack : R.colors.baseGrey}
               onPress={() => setGrid(1)}
             />
           </View>
@@ -195,6 +198,7 @@ const Detail = ({navigation, route}) => {
                     bottom: RFValue(8),
                     left: RFValue(10),
                     flexDirection: 'row',
+                    alignItems: 'center',
                   }}>
                   <Icon
                     name={'location-outline'}

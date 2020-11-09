@@ -10,14 +10,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {RFValue} from 'react-native-responsive-fontsize';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useDispatch, useSelector} from 'react-redux';
 import api from '../actions/api';
 import {Loader} from '../components';
 import R from '../configs';
-import Empty from './Empty';
 
 const {width, height} = Dimensions.get('screen');
 const tag = ['Male', 'Friendly', 'Intelligent', 'Trained', 'Good Boi'];
@@ -56,7 +54,7 @@ const DetailInfo = ({navigation, route}) => {
       <Loader title={'Loading'} isVisible={loadingRedux} />
       <Image
         source={{uri: data.image}}
-        style={{width: width, height: height / 2}}
+        style={{width: width, height: height / 2.2}}
       />
       <Icon
         name={'chevron-back-outline'}
@@ -81,7 +79,7 @@ const DetailInfo = ({navigation, route}) => {
         onPress={() => setLike(!like)}
       />
       <View
-        style={{padding: RFValue(20), position: 'absolute', top: height / 2.8}}>
+        style={{padding: RFValue(20), position: 'absolute', top: height / 3}}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Text
             style={{
@@ -154,19 +152,7 @@ const DetailInfo = ({navigation, route}) => {
               color: R.colors.baseGreyDark,
               marginBottom: RFValue(10),
             }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-            malesuada magna egestas auctor viverra. Vivamus ex diam, elementum
-            vitae egestas eu, tincidunt vel elit. Cras malesuada condimentum
-            arcu. Mauris felis enim, tempor ut pharetra quis, tristique
-            malesuada neque. Suspendisse nisl tortor, lacinia ut ipsum eget,
-            tempor rutrum velit. Maecenas dignissim ut nulla sit amet hendrerit.
-            Cras vulputate odio non est hendrerit dapibus. Morbi et egestas
-            arcu. Aliquam blandit eleifend diam eu sodales. Ut lobortis nisi sit
-            amet molestie dignissim. Donec at pulvinar magna. Sed sodales sem
-            sed purus vehicula dapibus. Sed scelerisque nunc et ipsum tincidunt
-            tincidunt. Integer ut dolor sit amet arcu venenatis ultricies vel
-            sed lacus. In commodo magna purus, eu sollicitudin nibh lobortis
-            vel. Vestibulum tincidunt diam nec purus varius dignissim.
+            {R.strings.LOREM_IPSUM_LONG}
           </Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {tag.map((item, index) => (

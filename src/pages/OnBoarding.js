@@ -17,15 +17,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import R from '../configs';
 
 const header = [
-  'What is BRI Mobile Loan Dashboard?',
+  'What is Pet Finder?',
   'Three Amazing Features',
   'Simple Yet Functional',
 ];
 
 const content = [
-  'BRI Mobile Loan Dashboard membantu kamu untuk memonitoring dan melakukan proses approval pada segmen Menengah dan Korporasi.',
-  'BRI Mobile Loan Dashboard memiliki 3 fitur unggulan : Monitoring Proses Kredit dan Account Planning secara Up-to-Date, Proses Approval Account Planning dan Pipeline, Grafik Simpanan dan Pinjaman yang Up-to-Date',
-  'BRI Mobile Loan Dashboard menawarkan UI yang Simple sehingga mudah digunakan untuk melakukan monitoring dan approval sehingga setiap proses dapat berjalan secara cepat',
+  R.strings.LOREM_IPSUM_SHORT,
+  R.strings.LOREM_IPSUM_SHORT,
+  R.strings.LOREM_IPSUM_SHORT,
 ];
 
 const {width, height} = Dimensions.get('screen');
@@ -184,5 +184,6 @@ const styles = StyleSheet.create({
     color: '#ABABAB',
     fontWeight: 'bold',
     fontSize: RFValue(14),
+    textAlign: 'justify',
   },
 });

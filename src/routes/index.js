@@ -2,7 +2,15 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {HomeStack} from '../components';
-import {Detail, DetailInfo, Empty, OnBoarding, SignIn, Splash} from '../pages';
+import {
+  Detail,
+  DetailInfo,
+  Empty,
+  OnBoarding,
+  SignIn,
+  Splash,
+  Profile,
+} from '../pages';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +22,7 @@ const StackScreen = [
   {name: 'SignIn', component: SignIn},
   {name: 'Splash', component: Splash},
   {name: 'DetailInfo', component: DetailInfo},
+  {name: 'Profile', component: Profile},
 ];
 
 export default function Router() {
