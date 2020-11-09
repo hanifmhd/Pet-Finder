@@ -111,7 +111,10 @@ const Detail = ({navigation, route}) => {
           />
           <GradientText
             text={'Filter'}
-            style={{fontSize: R.sizes.txtHeading3}}
+            style={{
+              fontSize: R.sizes.txtHeading3,
+              fontFamily: R.fonts.NunitoRegular,
+            }}
           />
         </View>
         <View
@@ -125,7 +128,7 @@ const Detail = ({navigation, route}) => {
             style={{
               textTransform: 'capitalize',
               fontSize: R.sizes.txtHeading2,
-              fontWeight: 'bold',
+              fontFamily: R.fonts.NunitoBold,
             }}>{`${parent} Pet${children.length > 1 ? 's' : ''}`}</Text>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Icon
@@ -179,18 +182,20 @@ const Detail = ({navigation, route}) => {
                 <View
                   style={{
                     position: 'absolute',
-                    bottom: RFValue(22),
+                    bottom: RFValue(24),
                     left: RFValue(10),
                     flexDirection: 'row',
                   }}>
                   <Text
                     style={{
                       textTransform: 'capitalize',
-                      fontWeight: 'bold',
+                      fontFamily: R.fonts.NunitoBold,
                     }}>
                     {`${item.name}, `}
                   </Text>
-                  <Text>{item.age}</Text>
+                  <Text style={{fontFamily: R.fonts.NunitoRegular}}>
+                    {item.age}
+                  </Text>
                 </View>
                 <View
                   style={{
@@ -205,7 +210,9 @@ const Detail = ({navigation, route}) => {
                     size={RFValue(12)}
                     style={{marginRight: RFValue(2)}}
                   />
-                  <Text>{item.address}</Text>
+                  <Text style={{fontFamily: R.fonts.NunitoRegular}}>
+                    {item.address}
+                  </Text>
                 </View>
               </View>
             </TouchableOpacity>

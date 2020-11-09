@@ -54,9 +54,16 @@ const Home = ({navigation}) => {
         <View style={{marginBottom: RFValue(10)}}>
           <GradientText
             text={'Breed'}
-            style={{fontSize: R.sizes.txtHeading1, fontWeight: 'bold'}}
+            style={{
+              fontSize: R.sizes.txtHeading1,
+              fontFamily: R.fonts.NunitoBold,
+            }}
           />
-          <Text style={{color: R.colors.baseGreyDark}}>
+          <Text
+            style={{
+              color: R.colors.baseGreyDark,
+              fontFamily: R.fonts.NunitoRegular,
+            }}>
             Find your lovely puppies and get it within 2 days
           </Text>
         </View>
@@ -86,13 +93,21 @@ const Home = ({navigation}) => {
                     style={{width: RFValue(40), height: RFValue(40)}}
                   />
                 </View>
-                <Text style={{fontWeight: 'bold', textTransform: 'capitalize'}}>
+                <Text
+                  style={{
+                    fontFamily: R.fonts.NunitoBold,
+                    textTransform: 'capitalize',
+                  }}>
                   {item}
                 </Text>
                 {data && (
-                  <Text style={{color: R.colors.baseGreyDark}}>{`${
-                    data[item].length
-                  } pet${data[item].length > 1 ? 's' : ''}`}</Text>
+                  <Text
+                    style={{
+                      fontFamily: R.fonts.NunitoRegular,
+                      color: R.colors.baseGreyDark,
+                    }}>{`${data[item].length} pet${
+                    data[item].length > 1 ? 's' : ''
+                  }`}</Text>
                 )}
               </TouchableOpacity>
             );
@@ -106,8 +121,7 @@ const Home = ({navigation}) => {
           refreshing={false}
           onRefresh={() => fetchListBreed()}
           contentContainerStyle={{
-            paddingBottom:
-              Platform.OS === 'android' ? RFValue(100) : RFValue(40),
+            paddingBottom: RFValue(120),
           }}
         />
       </View>
@@ -127,14 +141,14 @@ const styles = StyleSheet.create({
     padding: RFValue(20),
   },
   cardContainer: {
-    shadowColor: '#000',
+    shadowColor: R.colors.baseBlack,
     shadowOffset: {
       width: 0,
       height: 1,
     },
     shadowOpacity: 0.1,
     shadowRadius: 5,
-    elevation: 5,
+    elevation: 2,
     paddingVertical: RFValue(20),
     borderRadius: RFValue(4),
     margin: RFValue(4),

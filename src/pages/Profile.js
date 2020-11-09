@@ -58,12 +58,18 @@ const Profile = ({navigation}) => {
         <View style={{alignItems: 'center', marginBottom: RFValue(20)}}>
           <Text
             style={{
+              fontFamily: R.fonts.NunitoBold,
               fontSize: R.sizes.txtHeading1,
-              fontWeight: 'bold',
             }}>
             Luka Doncic
           </Text>
-          <Text style={{fontWeight: '800'}}>+62 821 1456 4652</Text>
+          <Text
+            style={{
+              fontFamily: R.fonts.NunitoSemiBold,
+              fontSize: R.sizes.txtBody,
+            }}>
+            +62 821 1456 4652
+          </Text>
         </View>
         <FlatList
           keyExtractor={(item, index) => index.toString()}
@@ -93,7 +99,7 @@ const Profile = ({navigation}) => {
                         index === 3 ? R.colors.baseRedLight : '#d2e5fc',
                       padding: RFValue(10),
                       alignItems: 'center',
-                      marginRight: RFValue(10),
+                      marginRight: RFValue(14),
                       borderRadius: RFValue(20),
                     }}>
                     <Icon
@@ -107,8 +113,9 @@ const Profile = ({navigation}) => {
                   </View>
                   <Text
                     style={{
+                      fontFamily: R.fonts.NunitoSemiBold,
+                      fontSize: R.sizes.txtBody,
                       color: index === 3 ? R.colors.baseRed : undefined,
-                      fontWeight: '900',
                     }}>
                     {item.name}
                   </Text>

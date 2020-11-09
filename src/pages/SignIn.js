@@ -206,6 +206,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     fontSize: RFValue(12),
+    fontFamily: R.fonts.NunitoRegular,
     marginHorizontal: RFValue(16),
   },
   containerLoginButton: {
@@ -217,7 +218,6 @@ const styles = StyleSheet.create({
   },
   loginButtonStyle: {
     color: '#FFFFFF',
-    fontWeight: 'bold',
-    fontSize: RFValue(12),
+    fontFamily: R.fonts.NunitoBold,
   },
 });

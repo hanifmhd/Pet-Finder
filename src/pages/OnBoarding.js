@@ -104,7 +104,7 @@ const OnBoarding = ({navigation}) => {
           {renderBoarding()}
         </Swiper>
         <TouchableOpacity onPress={() => next()} style={styles.containerNext}>
-          <Text style={[styles.skipStyle, styles.nextStyle]}>
+          <Text style={styles.skipStyle}>
             {indexSwiper === 2 ? `Let's Go` : 'Next'}
           </Text>
           <Icon
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   },
   skipStyle: {
     color: R.colors.basePrimary,
-    fontWeight: 'bold',
+    fontFamily: R.fonts.NunitoBold,
     fontSize: RFValue(14),
   },
   dotSwiper: {
@@ -160,7 +160,6 @@ const styles = StyleSheet.create({
     paddingBottom: RFValue(40),
     flexDirection: 'row',
   },
-  nextStyle: {fontWeight: 'bold'},
   containerContent: {marginTop: RFValue(-20)},
   containerImage: {
     justifyContent: 'flex-start',
@@ -176,13 +175,13 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     color: R.colors.basePrimary,
-    fontWeight: 'bold',
+    fontFamily: R.fonts.NunitoBold,
     fontSize: RFValue(24),
   },
   descriptionStyle: {
     marginTop: 25,
     color: '#ABABAB',
-    fontWeight: 'bold',
+    fontFamily: R.fonts.NunitoRegular,
     fontSize: RFValue(14),
     textAlign: 'justify',
   },

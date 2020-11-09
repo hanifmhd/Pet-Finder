@@ -38,11 +38,13 @@ const styles = StyleSheet.create({
     maxWidth: width * 0.85,
   },
   title: {
-    fontSize: R.sizes.txtHeading2,
-    fontWeight: 'bold',
+    fontFamily: R.fonts.NunitoBold,
+    fontSize: R.sizes.txtTitle,
     textAlign: 'center',
   },
   subtitle: {
+    fontFamily: R.fonts.NunitoRegular,
+    fontSize: R.sizes.txtBody,
     textAlign: 'center',
     color: R.colors.baseGreyDark,
   },

@@ -3,7 +3,14 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import React, {useEffect} from 'react';
-import {Alert, BackHandler, Image, ToastAndroid, View} from 'react-native';
+import {
+  Alert,
+  BackHandler,
+  Image,
+  Platform,
+  ToastAndroid,
+  View,
+} from 'react-native';
 import {
   BottomTabBarWrapper,
   MultiBarButton,
@@ -51,14 +58,15 @@ const HomeStack = ({navigation}) => {
           <View
             style={{
               alignItems: 'center',
-              justifyContent: 'center',
               backgroundColor: R.colors.basePrimary,
-              borderRadius: RFValue(48),
+              borderRadius: RFValue(40),
+              padding: RFValue(2),
             }}>
             <Icon
-              name={'add-circle-outline'}
+              name={'close-outline'}
               color={R.colors.baseWhite}
-              size={RFValue(24)}
+              size={RFValue(20)}
+              style={{marginLeft: Platform.OS === 'android' ? 0 : RFValue(2)}}
               onPress={() => Alert.alert('Coming soon!')}
             />
           </View>
@@ -67,13 +75,15 @@ const HomeStack = ({navigation}) => {
           <View
             style={{
               alignItems: 'center',
-              justifyContent: 'center',
               backgroundColor: R.colors.basePrimary,
+              borderRadius: RFValue(40),
+              padding: RFValue(2),
             }}>
             <Icon
-              name={'add-outline'}
+              name={'ellipse-outline'}
               color={R.colors.baseWhite}
-              size={RFValue(24)}
+              size={RFValue(20)}
+              style={{marginLeft: Platform.OS === 'android' ? 0 : RFValue(2)}}
               onPress={() => Alert.alert('Coming soon!')}
             />
           </View>
@@ -82,13 +92,15 @@ const HomeStack = ({navigation}) => {
           <View
             style={{
               alignItems: 'center',
-              justifyContent: 'center',
               backgroundColor: R.colors.basePrimary,
+              borderRadius: RFValue(40),
+              padding: RFValue(2),
             }}>
             <Icon
-              name={'add-outline'}
+              name={'triangle-outline'}
               color={R.colors.baseWhite}
-              size={RFValue(24)}
+              size={RFValue(20)}
+              style={{marginLeft: Platform.OS === 'android' ? 0 : RFValue(2)}}
               onPress={() => Alert.alert('Coming soon!')}
             />
           </View>
@@ -97,13 +109,15 @@ const HomeStack = ({navigation}) => {
           <View
             style={{
               alignItems: 'center',
-              justifyContent: 'center',
               backgroundColor: R.colors.basePrimary,
+              borderRadius: RFValue(40),
+              padding: RFValue(2),
             }}>
             <Icon
-              name={'add-outline'}
+              name={'square-outline'}
               color={R.colors.baseWhite}
-              size={RFValue(24)}
+              size={RFValue(20)}
+              style={{marginLeft: Platform.OS === 'android' ? 0 : RFValue(2)}}
               onPress={() => Alert.alert('Coming soon!')}
             />
           </View>

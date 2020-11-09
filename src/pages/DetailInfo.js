@@ -83,7 +83,7 @@ const DetailInfo = ({navigation, route}) => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Text
             style={{
-              fontWeight: 'bold',
+              fontFamily: R.fonts.NunitoBold,
               fontSize: R.sizes.txtHeading1,
               color: R.colors.baseWhite,
               textTransform: 'capitalize',
@@ -91,7 +91,11 @@ const DetailInfo = ({navigation, route}) => {
             {`${data.name}, `}
           </Text>
           <Text
-            style={{fontSize: R.sizes.txtHeading1, color: R.colors.baseWhite}}>
+            style={{
+              fontFamily: R.fonts.NunitoRegular,
+              fontSize: R.sizes.txtHeading1,
+              color: R.colors.baseWhite,
+            }}>
             {data.age}
           </Text>
         </View>
@@ -143,14 +147,14 @@ const DetailInfo = ({navigation, route}) => {
         }}
         showsVerticalScrollIndicator={false}>
         <View style={{marginBottom: RFValue(20)}}>
-          <Text style={{fontWeight: 'bold', marginBottom: RFValue(10)}}>
-            Introduction
-          </Text>
+          <Text style={styles.title}>Introduction</Text>
           <Text
             style={{
-              textAlign: 'justify',
+              fontFamily: R.fonts.NunitoRegular,
+              fontSize: R.sizes.txtBody,
               color: R.colors.baseGreyDark,
               marginBottom: RFValue(10),
+              textAlign: 'justify',
             }}>
             {R.strings.LOREM_IPSUM_LONG}
           </Text>
@@ -170,7 +174,11 @@ const DetailInfo = ({navigation, route}) => {
                   borderWidth: 1,
                 }}>
                 <Text
-                  style={{fontSize: RFValue(8), color: R.colors.baseGreyDark}}>
+                  style={{
+                    fontFamily: R.fonts.NunitoRegular,
+                    fontSize: R.sizes.txtBody,
+                    color: R.colors.baseGreyDark,
+                  }}>
                   {item}
                 </Text>
               </View>
@@ -178,15 +186,13 @@ const DetailInfo = ({navigation, route}) => {
           </ScrollView>
         </View>
         <View style={{marginBottom: RFValue(20)}}>
-          <Text style={{fontWeight: 'bold', marginBottom: RFValue(10)}}>
-            Gallery
-          </Text>
+          <Text style={styles.title}>Gallery</Text>
           {image.length === 0 ? (
             <Text style={{alignSelf: 'center'}}>No image</Text>
           ) : (
-            <View style={{flexDirection: 'row'}}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               {image.map((item, index) =>
-                index <= 2 ? (
+                index <= 4 ? (
                   <Image
                     key={index}
                     source={{uri: item, cache: 'force-cache'}}
@@ -197,7 +203,7 @@ const DetailInfo = ({navigation, route}) => {
                       marginRight: RFValue(10),
                     }}
                   />
-                ) : index === 3 ? (
+                ) : index === 5 ? (
                   <View
                     key={index}
                     style={{
@@ -214,18 +220,16 @@ const DetailInfo = ({navigation, route}) => {
                         fontWeight: '700',
                         color: R.colors.basePrimary,
                       }}>
-                      {`+${image.length - 3}`}
+                      {`+${image.length - 5}`}
                     </Text>
                   </View>
                 ) : null,
               )}
-            </View>
+            </ScrollView>
           )}
         </View>
         <View style={{marginBottom: RFValue(20)}}>
-          <Text style={{fontWeight: 'bold', marginBottom: RFValue(10)}}>
-            Owner Info
-          </Text>
+          <Text style={styles.title}>Owner Info</Text>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <View style={{borderRadius: RFValue(80), marginRight: RFValue(10)}}>
               <Image
@@ -238,8 +242,19 @@ const DetailInfo = ({navigation, route}) => {
               />
             </View>
             <View>
-              <Text>Luka Doncic</Text>
-              <Text style={{color: R.colors.baseGreyDark}}>
+              <Text
+                style={{
+                  fontFamily: R.fonts.NunitoBold,
+                  fontSize: R.sizes.txtBody,
+                }}>
+                Luka Doncic
+              </Text>
+              <Text
+                style={{
+                  fontFamily: R.fonts.NunitoRegular,
+                  fontSize: R.sizes.txtBody,
+                  color: R.colors.baseGreyDark,
+                }}>
                 luka.doncic@gmail.com
               </Text>
             </View>
@@ -263,5 +278,10 @@ const styles = StyleSheet.create({
     borderRadius: RFValue(4),
     margin: RFValue(4),
     alignItems: 'center',
+  },
+  title: {
+    fontFamily: R.fonts.NunitoBold,
+    fontSize: R.sizes.txtHeading3,
+    marginBottom: RFValue(10),
   },
 });
