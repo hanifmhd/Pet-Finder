@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   skipStyle: {
     color: R.colors.basePrimary,
     fontFamily: R.fonts.NunitoBold,
-    fontSize: RFValue(14),
+    fontSize: R.sizes.txtTitle,
   },
   dotSwiper: {
     backgroundColor: 'grey',
@@ -176,13 +176,13 @@ const styles = StyleSheet.create({
   titleStyle: {
     color: R.colors.basePrimary,
     fontFamily: R.fonts.NunitoBold,
-    fontSize: RFValue(24),
+    fontSize: R.sizes.txtHeading1,
   },
   descriptionStyle: {
     marginTop: 25,
     color: '#ABABAB',
     fontFamily: R.fonts.NunitoRegular,
-    fontSize: RFValue(14),
+    fontSize: R.sizes.txtBody,
     textAlign: 'justify',
   },
 });

@@ -219,5 +219,6 @@ const styles = StyleSheet.create({
   loginButtonStyle: {
     color: '#FFFFFF',
     fontFamily: R.fonts.NunitoBold,
+    fontSize: R.sizes.txtBody,
   },
 });

@@ -63,6 +63,7 @@ const Home = ({navigation}) => {
             style={{
               color: R.colors.baseGreyDark,
               fontFamily: R.fonts.NunitoRegular,
+              fontSize: R.sizes.txtBody,
             }}>
             Find your lovely puppies and get it within 2 days
           </Text>
@@ -96,6 +97,7 @@ const Home = ({navigation}) => {
                 <Text
                   style={{
                     fontFamily: R.fonts.NunitoBold,
+                    fontSize: R.sizes.txtTitle,
                     textTransform: 'capitalize',
                   }}>
                   {item}
@@ -104,6 +106,7 @@ const Home = ({navigation}) => {
                   <Text
                     style={{
                       fontFamily: R.fonts.NunitoRegular,
+                      fontSize: R.sizes.txtBody,
                       color: R.colors.baseGreyDark,
                     }}>{`${data[item].length} pet${
                     data[item].length > 1 ? 's' : ''

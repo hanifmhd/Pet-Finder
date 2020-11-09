@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: R.fonts.NunitoBold,
-    fontSize: R.sizes.txtTitle,
+    fontSize: R.sizes.txtHeading3,
     textAlign: 'center',
   },
   subtitle: {

@@ -10,6 +10,7 @@ import {
   SignIn,
   Splash,
   Profile,
+  Search,
 } from '../pages';
 
 const Stack = createStackNavigator();
@@ -23,6 +24,7 @@ const StackScreen = [
   {name: 'Splash', component: Splash},
   {name: 'DetailInfo', component: DetailInfo},
   {name: 'Profile', component: Profile},
+  {name: 'Search', component: Search},
 ];
 
 export default function Router() {

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginTop: RFValue(10),
-    fontFamily: R.fonts.OpenSansRegular,
+    fontFamily: R.fonts.NunitoRegular,
     fontSize: R.sizes.txtBody,
   },
 });

@@ -18,34 +18,6 @@ import {EmptyState, GradientText, Loader} from '../components';
 import R from '../configs';
 
 const {width, height} = Dimensions.get('screen');
-const city = [
-  "Bailey's",
-  'Prairie',
-  'Wakita',
-  'Horseshoe',
-  'Trainer',
-  'Valley Acres',
-  'St. Joe',
-  'Orient',
-  'Longtown',
-  'Aldine',
-  'North Randall',
-  'Water Mill',
-  'Dunbar',
-  'Brooker',
-  'Pine Knoll',
-  'Andersonville',
-  'Makena',
-  'Tyro',
-  'Nogal',
-  'Alburg',
-  'Weskan',
-  'Plessis',
-  'Mayodan',
-  'Keshena',
-  'Cuartelez',
-  'Richmond',
-];
 const Detail = ({navigation, route}) => {
   const dispatch = useDispatch();
   const loadingRedux = useSelector((state) => state.loading);
@@ -73,7 +45,9 @@ const Detail = ({navigation, route}) => {
       image: '',
       height: Math.floor(Math.random() * 100) + 100,
       age: `${parseFloat(Math.random() * 10 + 1).toFixed(1)} years`,
-      address: `${city[Math.round(Math.random() * (city.length - 1))]}, US`,
+      address: `${
+        R.strings.CITY[Math.round(Math.random() * (R.strings.CITY.length - 1))]
+      }, US`,
     };
     await dispatch(api.getImageBreed(parent, sub))
       .then((result) => {
@@ -206,7 +180,7 @@ const Detail = ({navigation, route}) => {
                     alignItems: 'center',
                   }}>
                   <Icon
-                    name={'location-outline'}
+                    name={'location'}
                     size={RFValue(12)}
                     style={{marginRight: RFValue(2)}}
                   />

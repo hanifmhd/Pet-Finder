@@ -19,7 +19,7 @@ import {
 import {RFValue} from 'react-native-responsive-fontsize';
 import Icon from 'react-native-vector-icons/Ionicons';
 import R from '../configs';
-import {Empty, Home, Profile} from '../pages';
+import {Empty, Home, Profile, Search} from '../pages';
 
 const Tab = createBottomTabNavigator();
 let backPressed = 0;
@@ -196,7 +196,7 @@ const HomeStack = ({navigation}) => {
         />
         <Tab.Screen
           name="Search"
-          component={Empty}
+          component={Search}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({focused, color, size}) => {

@@ -64,10 +64,10 @@ const Splash = ({navigation}) => {
         style={{width: RFValue(200), height: RFValue(100)}}
         resizeMode="cover"
       />
-      <Text style={styles.appName}>{appName}</Text>
-      <Text style={[styles.appName, {bottom: -(width - RFValue(144))}]}>
-        Version {DeviceInfo.getVersion()}
-      </Text>
+      <View style={{marginVertical: RFValue(10)}}>
+        <Text style={styles.title}>{appName}</Text>
+        <Text style={styles.subtitle}>Version {DeviceInfo.getVersion()}</Text>
+      </View>
     </View>
   );
 };
@@ -81,9 +81,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: R.colors.baseWhite,
   },
-  appName: {
-    fontWeight: 'bold',
-    fontSize: RFValue(16),
-    marginVertical: RFValue(36),
+  title: {
+    fontFamily: R.fonts.NunitoBold,
+    fontSize: R.sizes.txtTitle,
+    textAlign: 'center',
+  },
+  subtitle: {
+    fontFamily: R.fonts.NunitoRegular,
+    fontSize: R.sizes.txtBody,
+    textAlign: 'center',
+    color: R.colors.baseGreyDark,
   },
 });

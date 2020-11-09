@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {
   Alert,
   Dimensions,
+  FlatList,
   Image,
   ScrollView,
   StatusBar,
@@ -101,13 +102,17 @@ const DetailInfo = ({navigation, route}) => {
         </View>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Icon
-            name={'location-outline'}
+            name={'location'}
             size={RFValue(18)}
             color={R.colors.baseWhite}
             style={{marginRight: RFValue(2)}}
           />
           <Text
-            style={{fontSize: R.sizes.txtHeading3, color: R.colors.baseWhite}}>
+            style={{
+              fontSize: R.sizes.txtHeading3,
+              fontFamily: R.fonts.NunitoRegular,
+              color: R.colors.baseWhite,
+            }}>
             {data.address}
           </Text>
         </View>
@@ -188,7 +193,14 @@ const DetailInfo = ({navigation, route}) => {
         <View style={{marginBottom: RFValue(20)}}>
           <Text style={styles.title}>Gallery</Text>
           {image.length === 0 ? (
-            <Text style={{alignSelf: 'center'}}>No image</Text>
+            <Text
+              style={{
+                alignSelf: 'center',
+                fontFamily: R.fonts.NunitoRegular,
+                fontSize: R.sizes.txtBody,
+              }}>
+              No image
+            </Text>
           ) : (
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               {image.map((item, index) =>
@@ -216,8 +228,8 @@ const DetailInfo = ({navigation, route}) => {
                     }}>
                     <Text
                       style={{
-                        fontSize: RFValue(14),
-                        fontWeight: '700',
+                        fontSize: R.sizes.txtBody,
+                        fontFamily: R.fonts.NunitoSemiBold,
                         color: R.colors.basePrimary,
                       }}>
                       {`+${image.length - 5}`}

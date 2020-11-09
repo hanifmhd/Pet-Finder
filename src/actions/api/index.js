@@ -131,6 +131,39 @@ const api = {
       }
     };
   },
+  getListAllImageBreeds: () => {
+    return async (dispatch) => {
+      dispatch({type: redux.FETCH_LIST_IMAGE_ALL_BREEDS});
+      try {
+        const response = await fetch(
+          encodeURI(`${rest}/breeds/image/random/10`),
+          {
+            credentials: 'include',
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+        if (response.status !== 200) {
+          throw new Error(response.status);
+        }
+        const resConvert = await response.json();
+        dispatch({
+          type: redux.RECEIVE_LIST_IMAGE_ALL_BREEDS,
+          payload: resConvert,
+        });
+        return Promise.resolve(resConvert);
+      } catch (error) {
+        dispatch({
+          type: redux.API_ERROR,
+          payload: error,
+        });
+        return Promise.resolve(resConvert);
+      }
+    };
+  },
 };
 
 export default api;
